@@ -1,9 +1,7 @@
 # Gamificación Basada En Roles #
+## Plugin Block Moodle ##
 
-TODO Describe the plugin shortly here.
-
-TODO Provide more detailed description here.
-
+Plugin de tipo **Block** elaborado para el *Sistema de Gestión de Aprendizaje* 
 ## License ##
 
 2019 Dante
