@@ -26,3 +26,6 @@
 defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'Gamificación Basada En Roles';
+$string['gamification'] = "Contenido del Bloque de Gamificación";
+$string['gamification:addinstance'] = 'Agregar nuevo Bloque de Gamificación';
+$string['gamification:myaddinstance'] = 'Agregar un nuevo Bloque de Gamificación a la página de Moodle';

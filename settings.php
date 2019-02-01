@@ -25,7 +25,20 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-if ($ADMIN->fulltree) {
-   // TODO: Define the plugin settings page.
-   // https://docs.moodle.org/dev/Admin_settings
-}
+$settings -> add ( new admin_setting_heading ( 
+    'headerconfig' , 
+    get_string ( 'headerconfig' ,  'block_gamification' ) , 
+    get_string ( 'descconfig' ,  'block_gamification' ) 
+) ) ;
+// $settings->add(new admin_setting_configtext(
+//     'gamification/title',
+//     get_string('labeltitle', 'block_gamification'),
+//     get_string('desctitle', 'block_gamification'),
+//     get_string('defaultblocktitle', 'block_gamification')
+// )  ) ;
+$settings -> add ( new admin_setting_configcheckbox ( 
+    'gamification/Allow_HTML' , 
+    get_string ( 'labelallowhtml' ,  'block_gamification' ) , 
+    get_string ( 'descallowhtml' ,  'block_gamification' ) , 
+    '0' 
+) ) ;

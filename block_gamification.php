@@ -36,7 +36,7 @@ class block_gamification extends block_base {
      */
     public function init() {
         // Needed by Moodle to differentiate between blocks.
-        $this->title = get_string('pluginname', 'block_gamification');
+        $this->title = get_string('Gamificación Basada en Roles', 'block_gamification');
     }
 
     /**
@@ -58,12 +58,12 @@ class block_gamification extends block_base {
         $this->content = new stdClass();
         $this->content->items = array();
         $this->content->icons = array();
-        $this->content->footer = '';
+        $this->content->footer = 'Footer del Pluggin';
 
         if (!empty($this->config->text)) {
             $this->content->text = $this->config->text;
         } else {
-            $text = 'Please define the content text in /blocks/gamification/block_gamification.php.';
+            $text = 'Contenido del Plugin.';
             $this->content->text = $text;
         }
 
@@ -76,15 +76,21 @@ class block_gamification extends block_base {
      * The function is called immediatly after init().
      */
     public function specialization() {
-
-        // Load user defined title and make sure it's never empty.
-        if (empty($this->config->title)) {
-            $this->title = get_string('pluginname', 'block_gamification');
-        } else {
-            $this->title = $this->config->title;
+        if (isset($this->config)) {
+            if (empty($this->config->title)) {
+                $this->title = get_string('defaulttitle', 'block_gamification');            
+            } else {
+                $this->title = $this->config->title;
+            }
+     
+            if (empty($this->config->text)) {
+                $this->config->text = get_string('defaulttext', 'block_gamification');
+            }    
         }
     }
-
+    public function instance_allow_multiple() {
+        return true;
+      }
     /**
      * Enables global configuration of the block in settings.php.
      *
@@ -101,6 +107,24 @@ class block_gamification extends block_base {
      */
     public function applicable_formats() {
         return array(
+                 'site-index' => true,
+                'course-view' => true, 
+         'course-view-social' => false,
+                        'mod' => true, 
+                   'mod-quiz' => false
         );
+      }
+    public function instance_config_save($data,$nolongerused =false) {
+        if(get_config('gamification', 'Allow_HTML') == '1') {
+          $data->text = strip_tags($data->text);
+        }
+       
+        // And now forward to the default implementation defined in the parent class
+        return parent::instance_config_save($data,$nolongerused);
+      }
+      public function html_attributes() {
+        $attributes = parent::html_attributes(); // Get default values
+        $attributes['class'] .= ' block_'. $this->name(); // Append our class to class attribute
+        return $attributes;
     }
 }
