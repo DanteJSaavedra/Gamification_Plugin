@@ -2,8 +2,11 @@
 ## Plugin Block Moodle ##
 
 Plugin de tipo **Block** elaborado para el *Sistema de Gestión de Aprendizaje* <https://moodle.org/> sobre Gamificación Basada en Roles
-## License ##
 
+### Versiones ###
+- **[Versión 0.0.0](https://github.com/DanteJSaavedra/Gamification_Plugin/releases/tag/v0.0.0)** _Estructura del Plugin_ 
+- **[Versión 0.1.0](https://github.com/DanteJSaavedra/Gamification_Plugin/releases/tag/v0.1.0)** _Nombre e Identificador del Usuario_ **<-- Versión Actual**
+## License ##
 2019 Dante
 
 This program is free software: you can redistribute it and/or modify it under
