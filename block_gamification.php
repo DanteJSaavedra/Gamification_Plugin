@@ -30,13 +30,14 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class block_gamification extends block_base {
-
+    
     /**
      * Initializes class member variables.
      */
+
     public function init() {
         // Needed by Moodle to differentiate between blocks.
-        $this->title = get_string('pluginname', 'block_gamification');
+        $this->title = get_string('Gamificación Basada en Roles', 'block_gamification');
     }
 
     /**
@@ -45,7 +46,7 @@ class block_gamification extends block_base {
      * @return stdClass The block contents.
      */
     public function get_content() {
-
+        global $COURSE, $USER;
         if ($this->content !== null) {
             return $this->content;
         }
@@ -58,12 +59,18 @@ class block_gamification extends block_base {
         $this->content = new stdClass();
         $this->content->items = array();
         $this->content->icons = array();
-        $this->content->footer = '';
+        // $url = new moodle_url('/blocks/gamification/view.php', array('blockid' => $this->instance->id, 'courseid' => $COURSE->id));
+        // $this->content->footer = html_writer::link($url, get_string('Más Información', 'block_gamification'));
 
         if (!empty($this->config->text)) {
             $this->content->text = $this->config->text;
         } else {
-            $text = 'Please define the content text in /blocks/gamification/block_gamification.php.';
+            $text = 'Bienvenido <em>'.$USER->firstname.
+                                '</em><br> <div class="alert alert-primary" role="alert">
+                                <strong>Id: </strong><em>'
+                                . $USER->id.
+                                '</em></div>';
+                                
             $this->content->text = $text;
         }
 
@@ -76,15 +83,21 @@ class block_gamification extends block_base {
      * The function is called immediatly after init().
      */
     public function specialization() {
-
-        // Load user defined title and make sure it's never empty.
-        if (empty($this->config->title)) {
-            $this->title = get_string('pluginname', 'block_gamification');
-        } else {
-            $this->title = $this->config->title;
+        if (isset($this->config)) {
+            if (empty($this->config->title)) {
+                $this->title = get_string('defaulttitle', 'block_gamification');            
+            } else {
+                $this->title = $this->config->title;
+            }
+     
+            if (empty($this->config->text)) {
+                $this->config->text = get_string('defaulttext', 'block_gamification');
+            }    
         }
     }
-
+    public function instance_allow_multiple() {
+        return true;
+      }
     /**
      * Enables global configuration of the block in settings.php.
      *
@@ -101,6 +114,24 @@ class block_gamification extends block_base {
      */
     public function applicable_formats() {
         return array(
+                 'site-index' => true,
+                'course-view' => true, 
+         'course-view-social' => false,
+                        'mod' => true, 
+                   'mod-quiz' => false
         );
+      }
+    public function instance_config_save($data,$nolongerused =false) {
+        if(get_config('gamification', 'Allow_HTML') == '1') {
+          $data->text = strip_tags($data->text);
+        }
+       
+        // And now forward to the default implementation defined in the parent class
+        return parent::instance_config_save($data,$nolongerused);
+      }
+      public function html_attributes() {
+        $attributes = parent::html_attributes(); // Get default values
+        $attributes['class'] .= ' block_'. $this->name(); // Append our class to class attribute
+        return $attributes;
     }
 }
