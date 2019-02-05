@@ -30,10 +30,11 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class block_gamification extends block_base {
-
+    
     /**
      * Initializes class member variables.
      */
+
     public function init() {
         // Needed by Moodle to differentiate between blocks.
         $this->title = get_string('Gamificación Basada en Roles', 'block_gamification');
@@ -45,7 +46,7 @@ class block_gamification extends block_base {
      * @return stdClass The block contents.
      */
     public function get_content() {
-
+         global $COURSE;
         if ($this->content !== null) {
             return $this->content;
         }
@@ -58,7 +59,8 @@ class block_gamification extends block_base {
         $this->content = new stdClass();
         $this->content->items = array();
         $this->content->icons = array();
-        $this->content->footer = 'Footer del Pluggin';
+        $url = new moodle_url('/blocks/gamification/view.php', array('blockid' => $this->instance->id, 'courseid' => $COURSE->id));
+        $this->content->footer = html_writer::link($url, get_string('addpage', 'block_gamification'));
 
         if (!empty($this->config->text)) {
             $this->content->text = $this->config->text;
