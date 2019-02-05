@@ -46,7 +46,7 @@ class block_gamification extends block_base {
      * @return stdClass The block contents.
      */
     public function get_content() {
-         global $COURSE;
+        global $COURSE, $USER;
         if ($this->content !== null) {
             return $this->content;
         }
@@ -59,13 +59,18 @@ class block_gamification extends block_base {
         $this->content = new stdClass();
         $this->content->items = array();
         $this->content->icons = array();
-        $url = new moodle_url('/blocks/gamification/view.php', array('blockid' => $this->instance->id, 'courseid' => $COURSE->id));
-        $this->content->footer = html_writer::link($url, get_string('addpage', 'block_gamification'));
+        // $url = new moodle_url('/blocks/gamification/view.php', array('blockid' => $this->instance->id, 'courseid' => $COURSE->id));
+        // $this->content->footer = html_writer::link($url, get_string('Más Información', 'block_gamification'));
 
         if (!empty($this->config->text)) {
             $this->content->text = $this->config->text;
         } else {
-            $text = 'Contenido del Plugin.';
+            $text = 'Bienvenido <em>'.$USER->firstname.
+                                '</em><br> <div class="alert alert-primary" role="alert">
+                                <strong>Id: </strong><em>'
+                                . $USER->id.
+                                '</em></div>';
+                                
             $this->content->text = $text;
         }
 

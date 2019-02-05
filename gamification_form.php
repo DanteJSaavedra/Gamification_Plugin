@@ -6,6 +6,6 @@ class gamification_form extends moodleform {
     function definition() {
  
         $mform =& $this->_form;
-        $mform->addElement('header','displayinfo', get_string('textfields', 'block_gamification'));
+        $mform->addElement('header','displayinfo', get_string('Campos de Texto', 'block_gamification'));
     }
 }
