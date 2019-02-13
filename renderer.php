@@ -1,4 +1,8 @@
 <?php
+use renderable;                                                                                                                     
+use renderer_base;                                                                                                                  
+use templatable;                                                                                                                    
+use stdClass;  
 
 defined('MOODLE_INTERNAL') || die;
 
@@ -10,9 +14,9 @@ class block_gamification_renderer extends plugin_renderer_base{
      *
      * @return string html for the page
      */
-    public function render_view_page($page){
+    public function render_perfil_page($page){
         $data = $page->export_for_template($this);
-        return parent::render_from_template('block_gamification/view_page', $data);
+        return parent::render_from_template('block_gamification/perfil_page', $data);
     }
 }
 trait renderer_page_trait{
@@ -32,6 +36,6 @@ trait renderer_page_trait{
         return $this->data;
     } 
 }
-class view_page implements renderable, templatable{
+class perfil_page implements renderable, templatable{
     use renderer_page_trait;
 }

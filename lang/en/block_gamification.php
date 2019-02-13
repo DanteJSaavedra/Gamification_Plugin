@@ -27,11 +27,9 @@ defined('MOODLE_INTERNAL') || die();
 
 
 // gamification/block_gamification.php
-// * Titulo
 $string['index_pluginname'] = 'Gamificación Basada En Roles';
 $string['index_defaultTitle'] = 'Gamificación Basada En Roles - Título por Defecto';
 $string['index_defaultContent'] = 'Contenido por Defecto del Plugin';
-// * Body
 $string['index_rol'] = 'Tú Rol: ';
 $string['index_rolValor'] = 'VALOR';
 $string['index_perfil'] = 'Mi Perfil';
@@ -42,9 +40,12 @@ $string['index_companeros'] = 'Mi Rol';
 $string['view_title'] = 'Título de la Vista';
 
 // gamification/gamification_form.php
-
 $string['gform_title'] = 'Formulario';
 $string['gform_edicion'] = 'Edición';
 $string['gform_configuracion'] = 'Configuración';
 $string['gform_editarpagina'] = 'Editar Pagina';
+$string['gform_titulopagina'] = 'Entrada de Texto';
+$string['gform_displaytext'] = 'Editor HTML';
 
+// gamification/perfil.php
+$string['perfil_title'] = 'Mi Rol';
