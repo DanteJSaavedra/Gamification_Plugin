@@ -37,7 +37,7 @@ class block_gamification extends block_base {
 
     public function init() {
         // Needed by Moodle to differentiate between blocks.
-        $this->title = get_string('Gamificación Basada en Roles', 'block_gamification');
+        $this->title = html_writer::start_tag('h4',array('class'=>'text-center')) . get_string('index_pluginname', 'block_gamification') . html_writer::end_tag('h4');
     }
 
     /**
@@ -46,7 +46,8 @@ class block_gamification extends block_base {
      * @return stdClass The block contents.
      */
     public function get_content() {
-        global $COURSE, $USER;
+        global $COURSE, $USER, $PAGE, $OUTPUT;
+        $context = context_course::instance($COURSE->id);
         if ($this->content !== null) {
             return $this->content;
         }
@@ -59,20 +60,36 @@ class block_gamification extends block_base {
         $this->content = new stdClass();
         $this->content->items = array();
         $this->content->icons = array();
-        // $url = new moodle_url('/blocks/gamification/view.php', array('blockid' => $this->instance->id, 'courseid' => $COURSE->id));
-        // $this->content->footer = html_writer::link($url, get_string('Más Información', 'block_gamification'));
-
+        $url = new moodle_url('/blocks/gamification/view.php', array('blockid' => $this->instance->id, 'courseid' => $COURSE->id));
+        $this->content->footer = html_writer::link($url, get_string('gform_title', 'block_gamification'));
         if (!empty($this->config->text)) {
             $this->content->text = $this->config->text;
         } else {
-            $text = 'Bienvenido <em>'.$USER->firstname.
-                                '</em><br> <div class="alert alert-primary" role="alert">
-                                <strong>Id: </strong><em>'
-                                . $USER->id.
-                                '</em></div>';
+            $text = html_writer::div(
+                        html_writer::div(
+                            html_writer::start_tag('strong').
+                            get_string('index_rol', 'block_gamification').
+                            html_writer::end_tag('strong').
+                            get_string('index_rolValor', 'block_gamification'),
+                            'row alert alert-dark'),
+                        'container');
+            $text .= html_writer::div(
+                        html_writer::div(
+                            html_writer::div(get_string('index_perfil', 'block_gamification').
+                                    html_writer::start_tag('hr').html_writer::start_tag('i',array('class'=>'icon fa fa-user')).html_writer::end_tag('i')         
+                                ,'col-4 alert alert-primary text-center').
+                            html_writer::div(get_string('index_curso', 'block_gamification').
+                                    html_writer::start_tag('hr').html_writer::start_tag('i',array('class'=>'icon fa fa-graduation-cap')).html_writer::end_tag('i')
+                                ,'col-4 alert alert-success text-center').
+                            html_writer::div(get_string('index_companeros', 'block_gamification').
+                                    html_writer::start_tag('hr').html_writer::start_tag('i',array('class'=>'icon fa fa-users')).html_writer::end_tag('i')
+                                ,'col-4 alert alert-info text-center'),
+                            'row'),
+                        'container');
                                 
             $this->content->text = $text;
         }
+        //$this->content->footer = get_string('footer', 'block_gamification');
 
         return $this->content;
     }

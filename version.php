@@ -26,6 +26,5 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'block_gamification';
 $plugin->release = '0.1.0';
-$plugin->version = 2019012900;
+$plugin->version = 2019012912;
 $plugin->requires = 2018120300;
-$plugin->maturity = MATURITY_ALPHA;
