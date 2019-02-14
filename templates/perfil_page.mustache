@@ -8,16 +8,30 @@
         <div class="col-2">
                 <img src="{{{logo}}}" alt="Búho" class="img-fluid">
         </div>
-        <div class="col-8">
-            <h2>{{rol}}</h2>
+        <div class="col-7">
+            <h2><strong>{{rol}}</strong></h2>
             <hr>
             <p>Búho es el nombre común de aves de la familia Strigidae, del orden de los estrigiformes o aves rapaces nocturnas. Habitualmente designa especies que, a diferencia de las lechuzas, tienen plumas alzadas que parecen orejas (sus verdaderas orejas se encuentran al costado de la cabeza, a los laterales de los ojos) y presentan una coloración amarilla o naranja en el iris. Debido a que sus ojos carecen de movilidad y solo pueden ver hacia delante, pueden girar la cabeza 270°.
             </p>
         </div>
-        <div class="col-2 text-right">
+        <div class="col-3 text-right">
             <h3>{{puntaje_text}}</h3>
             <h1 class="display-5"><strong>{{puntaje_value}}</strong></h1>
+            <hr>
+            <h3>Progreso</h3>
+            <div class="progress border mw-100">
+                <div class="progress-bar progress-bar-striped progress-bar-animated " role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%"></div>
+            </div>
         </div>
     </div>
-
+    <hr>
+    <div class="row">
+        <div class="col-6">
+            <h3>Mis Características</h3>
+            <svg width='200' height='500'></svg>
+        </div>
+        <div class="col-6">
+            <h3>Mi Progreso</h3>
+        </div>
+    </div>
 </div>

@@ -5,6 +5,7 @@ require_once($CFG->libdir.'/adminlib.php' ) ;
 $PAGE->set_context(context_system::instance());
 $PAGE->requires->js('/blocks/gamification/js/d3.min.js', true);
 $PAGE->requires->js('/blocks/gamification/js/perfil.js', false);
+$PAGE->requires->css('/blocks/gamification/css/style.css',false);
 $title = get_string('perfil_title', 'block_gamification');
 $pagetitle = $title;
 $PAGE->set_pagelayout('standard');
