@@ -5,7 +5,8 @@ Plugin de tipo **Block** elaborado para el *Sistema de Gestión de Aprendizaje* 
 
 ### Versiones ###
 - **[Versión 0.0.0](https://github.com/DanteJSaavedra/Gamification_Plugin/releases/tag/v0.0.0)** _Estructura del Plugin_ 
-- **[Versión 0.1.0](https://github.com/DanteJSaavedra/Gamification_Plugin/releases/tag/v0.1.0)** _Nombre e Identificador del Usuario_ **<-- Versión Actual**
+- **[Versión 0.1.0](https://github.com/DanteJSaavedra/Gamification_Plugin/releases/tag/v0.1.0)** _Nombre e Identificador del Usuario_ 
+- **[Versión 0.2.0](https://github.com/DanteJSaavedra/Gamification_Plugin/releases/tag/v0.2.0)** _Vistas Listas y librerias integradas_ **<-- Versión Actual**
 ## License ##
 2019 Dante
 
