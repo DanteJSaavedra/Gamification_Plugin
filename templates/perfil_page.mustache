@@ -5,22 +5,50 @@
         <p id="demo"></p>
     </div> -->
     <div class="row">
-        <div class="col-2">
+        <div class="col-2 text-center">
                 <img src="{{{logo}}}" alt="Búho" class="img-fluid">
+                <h3 >
+                    <i class="text-primary fa fa-star-o"        aria-hidden="true" data-toggle="popover" data-trigger="hover" title="Característica 1" data-content="Descripción de la característica 1" data-placement="left"></i>
+                    <i class="text-success fa fa-star-half-o"   aria-hidden="true" data-toggle="popover" data-trigger="hover" title="Característica 2" data-content="Descripción de la característica 2" data-placement="top"></i>
+                    <i class="text-danger fa fa-star-half-o"   aria-hidden="true" data-toggle="popover" data-trigger="hover" title="Característica 3" data-content="Descripción de la característica 3" data-placement="bottom"></i>
+                    <i class="text-warning fa fa-star"          aria-hidden="true" data-toggle="popover" data-trigger="hover" title="Característica 4" data-content="Descripción de la característica 4" data-placement="top"></i>
+                    <i class="text-info fa fa-star-o"        aria-hidden="true" data-toggle="popover" data-trigger="hover" title="Característica 5" data-content="Descripción de la característica 5" data-placement="right"></i>
+                </h3>
+                <p class="text-center text-info"><em>Cada Estrella representa un logro obtenido. Por ejemplo: tiempo conectado, material visualizado.</em></p>
         </div>
-        <div class="col-7">
+        <div class="col-6">
             <h2><strong>{{rol}}</strong></h2>
             <hr>
-            <p>Búho es el nombre común de aves de la familia Strigidae, del orden de los estrigiformes o aves rapaces nocturnas. Habitualmente designa especies que, a diferencia de las lechuzas, tienen plumas alzadas que parecen orejas (sus verdaderas orejas se encuentran al costado de la cabeza, a los laterales de los ojos) y presentan una coloración amarilla o naranja en el iris. Debido a que sus ojos carecen de movilidad y solo pueden ver hacia delante, pueden girar la cabeza 270°.
-            </p>
+            <p class="text-justify">Búho es el nombre común de aves de la familia Strigidae, del orden de los estrigiformes o aves rapaces nocturnas. Habitualmente designa especies que, a diferencia de las lechuzas, tienen plumas alzadas que parecen orejas (sus verdaderas orejas se encuentran al costado de la cabeza, a los laterales de los ojos) y presentan una coloración amarilla o naranja en el iris.</p>
+            <p class="text-center text-info"><em>En el parrafo anterior deberia ir la descripción de las características del rol en un texto llamativo.</em></p>
         </div>
-        <div class="col-3 text-right">
-            <h3>{{puntaje_text}}</h3>
-            <h1 class="display-5"><strong>{{puntaje_value}}</strong></h1>
+        <div class="col-4 ">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-6">
+                        <h4>{{puntaje_text}} Total</h4>
+                        <h1 class="display-5"><strong>{{puntaje_value}}</strong></h1>
+                    </div>
+                    <div class="col-6">
+                        <h4 class="text-right">{{puntaje_text}} Rol</h4>
+                        <h1 class="display-5 text-right"><strong>2550</strong></h1>
+                    </div>
+                </div>
+            </div>
+           
+            
             <hr>
-            <h3>Progreso</h3>
-            <div class="progress border mw-100">
-                <div class="progress-bar progress-bar-striped progress-bar-animated " role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%"></div>
+            <div class="row">
+                <div class="col-4 text-center">
+                <h3><strong>Nivel 7</strong></h3>
+                <img src="{{{rank7}}}" alt="Búho" class="img-fluid">
+                </div>
+                <div class="col-8 text-right">
+                    <img src="{{{rank8}}}" alt="Búho" height=50 width=50>
+                    <div class="progress border mw-100 mt-3" style="height: 40px;">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated " role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -28,10 +56,18 @@
     <div class="row">
         <div class="col-6">
             <h3>Mis Características</h3>
-            <svg width='200' height='500'></svg>
+            <div class="alert alert-info text-center">
+            <p class="text-center text-info"><em>Gráfico Radar que cada eje indique las características del usuario se visualizaran 2 Series, una del usuario y una del rol.</em> <br></p>
+            <h4><a href="https://www.visualcinnamon.com/2015/10/different-look-d3-radar-chart">Ejemplo del Gráfico</a></h4>
+            </div>
         </div>
         <div class="col-6">
             <h3>Mi Progreso</h3>
+            <div class="alert alert-info text-center">
+            <p class="text-center text-info"><em>Diagrama de Flujo de Sankey, donde cada columna indicara una semana y cada elemento de la columna sera uno de los roles, se vera la evolución del usuario en los distintos roles.</em> <br>
+            </p>
+            <h4><a href="https://jarrettmeyer.com/2018/05/31/creating-a-d3-sankey-graph">Ejemplo del Gráfico</a></h4>
+            </div>
         </div>
     </div>
 </div>

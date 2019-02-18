@@ -23,6 +23,8 @@ $data->rol = 'Búho';
 $data->puntaje_text = 'Puntaje';
 $data->puntaje_value = 15050;
 $data->logo = $OUTPUT->image_url('owl', 'block_gamification');
+$data->rank7 = $OUTPUT->image_url('rank-7', 'block_gamification');
+$data->rank8 = $OUTPUT->image_url('rank-8', 'block_gamification');
 $renderable = new perfil_page($data);
 echo $OUTPUT->render($renderable);
 echo $OUTPUT->footer();

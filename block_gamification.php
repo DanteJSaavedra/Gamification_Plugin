@@ -60,37 +60,69 @@ class block_gamification extends block_base {
         $this->content = new stdClass();
         $this->content->items = array();
         $this->content->icons = array();
-        $url = new moodle_url('/blocks/gamification/view.php', array('blockid' => $this->instance->id, 'courseid' => $COURSE->id));
-        $url = new moodle_url('/blocks/gamification/perfil.php');
-        $this->content->footer = html_writer::link($url, get_string('gform_title', 'block_gamification'));
+        // $this->content->footer = html_writer::link($url, get_string('gform_title', 'block_gamification'));
         if (!empty($this->config->text)) {
             $this->content->text = $this->config->text;
         } else {
             $text = html_writer::div(
                         html_writer::div(
-                            html_writer::start_tag('strong').
-                            get_string('index_rol', 'block_gamification').
-                            html_writer::end_tag('strong').
-                            get_string('index_rolValor', 'block_gamification'),
-                            'row alert alert-dark'),
-                        'container');
+                            html_writer::div( 
+                                html_writer::start_tag('h2') . 'Búho' . html_writer::end_tag('h2').
+                                html_writer::empty_tag('img', array('src'=> $OUTPUT->image_url('owl', 'block_gamification'), 'class'=>'img-fluid')).
+                                html_writer::start_tag('i',array('class'=>'text-primary fa fa-star-o')) . html_writer::end_tag('i') .
+                                html_writer::start_tag('i',array('class'=>'text-success fa fa-star-half-o')) . html_writer::end_tag('i') .
+                                html_writer::start_tag('i',array('class'=>'text-danger fa fa-star-half-o')) . html_writer::end_tag('i') .
+                                html_writer::start_tag('i',array('class'=>'text-warning fa fa-star')) . html_writer::end_tag('i') .
+                                html_writer::start_tag('i',array('class'=>'text-info fa fa-star-o')) . html_writer::end_tag('i') 
+                                ,'col-4 text-center' ).
+                            html_writer::div( 
+                                html_writer::start_tag('h5',array('class'=>'text-right')) . 'Puntaje Total' . html_writer::end_tag('h5').
+                                html_writer::start_tag('h4',array('class'=>'text-right font-weight-bold')) . '15050' . html_writer::end_tag('h4').
+                                html_writer::start_tag('h5',array('class'=>'text-right')) . 'Puntaje Rol' . html_writer::end_tag('h5').
+                                html_writer::start_tag('h4',array('class'=>'text-right font-weight-bold')) . '2550' . html_writer::end_tag('h4')
+                            ,'col-8' ),                          
+                        'row').
+                        html_writer::div(
+                            html_writer::div(
+                                html_writer::start_tag('strong') .'Nivel 7'. html_writer::end_tag('strong').
+                                html_writer::empty_tag('img', array('src'=> $OUTPUT->image_url('rank-7', 'block_gamification'), 'height' =>'50', 'width'=>'50')),
+                            'col-4 text-center').
+                            html_writer::div(
+                                html_writer::empty_tag('img', array('src'=> $OUTPUT->image_url('rank-8', 'block_gamification'), 'height' =>'35', 'width'=>'35')).
+                                html_writer::div(html_writer::div('','progress-bar progress-bar-striped progress-bar-animated',array('role'=>'progressbar','style'=>'width:50%','height'=>'30','aria-valuenow'=>'2550','aria-valuemin'=>'2201','aria-valuemax'=>'2900')),'progress mt-1',array('style'=>'height: 20px;')),
+                            'col-8 text-right')
+                        ,'row mt-3'),
+                    'container'). 
+                    html_writer::empty_tag('hr');
             $text .= html_writer::div(
                         html_writer::div(
-                            html_writer::div(get_string('index_perfil', 'block_gamification').
-                                    html_writer::start_tag('hr').html_writer::start_tag('i',array('class'=>'icon fa fa-user')).html_writer::end_tag('i')         
+                            html_writer::div(
+                                    html_writer::start_tag('strong') . get_string('index_perfil', 'block_gamification') . html_writer::end_tag('strong').
+                                    html_writer::start_tag('hr').
+                                    html_writer::link(new moodle_url('/blocks/gamification/perfil.php'), html_writer::empty_tag('img', array('src'=> $OUTPUT->image_url('user', 'block_gamification'), 'class'=>'img-fluid')))
+                                             
                                 ,'col-4 alert alert-primary text-center').
-                            html_writer::div(get_string('index_curso', 'block_gamification').
-                                    html_writer::start_tag('hr').html_writer::start_tag('i',array('class'=>'icon fa fa-graduation-cap')).html_writer::end_tag('i')
+                            html_writer::div(
+                                    html_writer::start_tag('strong') . get_string('index_curso', 'block_gamification') . html_writer::end_tag('strong').
+                                    html_writer::start_tag('hr').
+                                    html_writer::link(new moodle_url('/blocks/gamification/curso.php'), html_writer::empty_tag('img', array('src'=> $OUTPUT->image_url('graduate', 'block_gamification'), 'class'=>'img-fluid')))
                                 ,'col-4 alert alert-success text-center').
-                            html_writer::div(get_string('index_companeros', 'block_gamification').
-                                    html_writer::start_tag('hr').html_writer::start_tag('i',array('class'=>'icon fa fa-users')).html_writer::end_tag('i')
+                            html_writer::div(
+                                    html_writer::start_tag('strong') . get_string('index_companeros', 'block_gamification') . html_writer::end_tag('strong').
+                                    html_writer::start_tag('hr').
+                                    html_writer::link(new moodle_url('/blocks/gamification/rol.php'), html_writer::empty_tag('img', array('src'=> $OUTPUT->image_url('group-people', 'block_gamification'), 'class'=>'img-fluid')))
                                 ,'col-4 alert alert-info text-center'),
                             'row'),
                         'container');
                                 
             $this->content->text = $text;
         }
-        //$this->content->footer = get_string('footer', 'block_gamification');
+        $this->content->footer = html_writer::start_tag('footer', array('class'=>'text-center')).
+                                    html_writer::empty_tag('hr').
+                                    html_writer::link (new moodle_url('/blocks/gamification/information.php'),'Más Información sobre Gamificación Basada en Roles').
+                                    html_writer::empty_tag('hr').
+                                    html_writer::end_tag('footer');
+         
 
         return $this->content;
     }

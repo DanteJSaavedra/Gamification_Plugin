@@ -8,7 +8,7 @@
 	"Html_writer":{
 		"prefix": "htmlw",
 		"body":[
-			"html_writer::start_tag('$1',array('class'=>'$2')) . $3 . html_writter::end_tag('$1')"
+			"html_writer::start_tag('$1',array('class'=>'$2')) . $3 . html_writer::end_tag('$1')"
 		]
 	},
 	"Get_String":{

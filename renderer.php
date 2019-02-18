@@ -18,6 +18,18 @@ class block_gamification_renderer extends plugin_renderer_base{
         $data = $page->export_for_template($this);
         return parent::render_from_template('block_gamification/perfil_page', $data);
     }
+    public function render_curso_page($page){
+        $data = $page->export_for_template($this);
+        return parent::render_from_template('block_gamification/curso_page', $data);
+    }
+    public function render_information_page($page){
+        $data = $page->export_for_template($this);
+        return parent::render_from_template('block_gamification/information_page', $data);
+    }
+    public function render_rol_page($page){
+        $data = $page->export_for_template($this);
+        return parent::render_from_template('block_gamification/rol_page', $data);
+    }
 }
 trait renderer_page_trait{
     /** @var stdClass data to a template. */
@@ -37,5 +49,14 @@ trait renderer_page_trait{
     } 
 }
 class perfil_page implements renderable, templatable{
+    use renderer_page_trait;
+}
+class curso_page implements renderable, templatable{
+    use renderer_page_trait;
+}
+class information_page implements renderable, templatable{
+    use renderer_page_trait;
+}
+class rol_page implements renderable, templatable{
     use renderer_page_trait;
 }
